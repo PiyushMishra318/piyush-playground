@@ -6,8 +6,14 @@ export default function PlayfulCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
   const [mode, setMode] = useState<"default" | "grab" | "star">("default");
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    setEnabled(!window.matchMedia("(pointer: coarse)").matches);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
     const onMove = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
       if (!visible) setVisible(true);
@@ -34,11 +40,9 @@ export default function PlayfulCursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
-  }, [visible]);
+  }, [enabled, visible]);
 
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
-    return null;
-  }
+  if (!enabled) return null;
 
   const icons = { default: "🔍", grab: "✋", star: "⭐" };
 
