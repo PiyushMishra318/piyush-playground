@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Fredoka, DM_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Fraunces } from "next/font/google";
 import "./globals.css";
 
-const fredoka = Fredoka({
+const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const dmSans = DM_Sans({
+const body = Fraunces({
   variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Piyush's GitHub Playground",
     description: "Explore public repos the fun way.",
-    url: "https://piyush-playground.vercel.app",
+    url: "https://piyushm.dev/projects",
   },
 };
 
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body">{children}</body>
     </html>
