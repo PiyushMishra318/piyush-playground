@@ -78,7 +78,7 @@ export default function StarHunt({ repos }: StarHuntProps) {
       )}
 
       {found.size > 0 && (
-        <div className="fixed bottom-24 right-4 z-30 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-[#2D2A26] shadow-lg backdrop-blur">
+        <div className="fixed bottom-24 right-4 z-30 rounded-full bg-surface/90 px-4 py-2 text-sm font-medium text-foreground shadow-lg backdrop-blur">
           {found.size}/5 stars ·{" "}
           {found.size === 5 ? "you're nosy. we like that." : "keep looking…"}
         </div>
@@ -86,19 +86,19 @@ export default function StarHunt({ repos }: StarHuntProps) {
 
       {secret && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#2D2A26]/60 p-4 backdrop-blur"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 p-4 backdrop-blur"
           onClick={() => setSecret(false)}
           role="dialog"
         >
           <div
-            className="max-w-sm rounded-3xl border-2 border-[#FFE66D] bg-[#FFF5E6] p-8 text-center shadow-[8px_8px_0_#FFE66D]"
+            className="max-w-sm rounded-3xl border-2 border-highlight bg-background p-8 text-center shadow-brutal-highlight"
             onClick={(e) => e.stopPropagation()}
           >
             <p className="text-4xl">🎮</p>
-            <h3 className="mt-3 font-display text-xl font-bold text-[#2D2A26]">
+            <h3 className="mt-3 font-display text-xl font-bold text-foreground">
               Konami unlocked!
             </h3>
-            <p className="mt-2 text-sm text-[#5C534A]">
+            <p className="mt-2 text-sm text-muted-foreground">
               Piyush&apos;s canvas games are the real boss fight. Go play Space
               Shooter.
             </p>
@@ -106,7 +106,7 @@ export default function StarHunt({ repos }: StarHuntProps) {
               href="https://html5-canvas-games.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block rounded-full bg-[#FF6B6B] px-6 py-2.5 text-sm font-bold text-white"
+              className="mt-4 inline-block rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-white"
             >
               Launch games →
             </a>

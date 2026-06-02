@@ -1,16 +1,50 @@
 @import "tailwindcss";
 
-:root {
-  --background: #fff5e6;
-  --foreground: #2d2a26;
-  --accent-coral: #ff6b6b;
-  --accent-mint: #4ecdc4;
-  --accent-yellow: #ffe66d;
+:root,
+[data-theme="light"] {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --muted-foreground: #52525b;
+  --surface: #ffffff;
+  --accent: #2563eb;
+  --accent-muted: #dbeafe;
+  --highlight: #d97706;
+  --highlight-muted: #fef3c7;
+  --secondary: #52525b;
+  --secondary-muted: #e4e4e7;
+  --galaxy-from: #fafafa;
+  --galaxy-to: #e4e4e7;
+}
+
+[data-theme="dark"] {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;
+  --muted-foreground: #d4d4d8;
+  --surface: #18181b;
+  --accent: #3b82f6;
+  --accent-muted: #1e3a5f;
+  --highlight: #f59e0b;
+  --highlight-muted: #422006;
+  --secondary: #a1a1aa;
+  --secondary-muted: #27272a;
+  --galaxy-from: #18181b;
+  --galaxy-to: #27272a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-highlight: var(--highlight);
+  --color-highlight-muted: var(--highlight-muted);
+  --color-secondary: var(--secondary);
+  --color-secondary-muted: var(--secondary-muted);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -20,6 +54,18 @@ body {
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
   cursor: none;
+  position: relative;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @media (pointer: coarse) {
@@ -34,6 +80,42 @@ body {
 
 .font-body {
   font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.shadow-brutal {
+  box-shadow: 8px 8px 0 var(--foreground);
+}
+
+.shadow-brutal-sm {
+  box-shadow: 4px 4px 0 var(--foreground);
+}
+
+.shadow-brutal-accent {
+  box-shadow: 3px 3px 0 var(--accent);
+}
+
+.shadow-brutal-secondary {
+  box-shadow: 3px 3px 0 var(--secondary);
+}
+
+.shadow-brutal-highlight {
+  box-shadow: 8px 8px 0 var(--highlight);
+}
+
+.shadow-card {
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+.shadow-card-hover {
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.bg-galaxy {
+  background: linear-gradient(
+    to bottom right,
+    var(--galaxy-from),
+    var(--galaxy-to)
+  );
 }
 
 @keyframes blink {
@@ -90,12 +172,12 @@ body {
 .intro-gate {
   background-image: radial-gradient(
       circle at 20% 30%,
-      rgba(255, 107, 107, 0.12) 0%,
+      color-mix(in srgb, var(--accent) 6%, transparent) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 70%,
-      rgba(78, 205, 196, 0.12) 0%,
+      color-mix(in srgb, var(--muted) 8%, transparent) 0%,
       transparent 50%
     );
 }

@@ -42,7 +42,7 @@ export default function RepoDeck({ repos, onSelect }: RepoDeckProps) {
               style={{ transformStyle: "preserve-3d" }}
             >
               <div
-                className="flip-front absolute inset-0 flex flex-col justify-between rounded-2xl border-2 border-[#2D2A26]/15 bg-white p-4 shadow-[4px_4px_0_rgba(45,42,38,0.08)]"
+                className="flip-front absolute inset-0 flex flex-col justify-between rounded-2xl border-2 border-foreground/15 bg-surface p-4 shadow-card"
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <div className="flex items-center gap-2">
@@ -52,15 +52,15 @@ export default function RepoDeck({ repos, onSelect }: RepoDeckProps) {
                   >
                     {repo.emoji}
                   </span>
-                  <span className="truncate font-display font-bold text-[#2D2A26]">
+                  <span className="truncate font-display font-bold text-foreground">
                     {repo.name}
                   </span>
                 </div>
-                <p className="text-xs text-[#8B7355]">tap to reveal →</p>
+                <p className="text-xs text-muted">tap to reveal →</p>
               </div>
 
               <div
-                className="flip-back absolute inset-0 flex flex-col justify-between rounded-2xl border-2 border-[#2D2A26] p-4 text-[#2D2A26]"
+                className="flip-back absolute inset-0 flex flex-col justify-between rounded-2xl border-2 border-foreground p-4 text-foreground"
                 style={{
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",

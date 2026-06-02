@@ -2,7 +2,7 @@
 
 An interactive portfolio — playful, curious, and definitely not a boring project grid.
 
-**Live:** [piyush-playground.vercel.app](https://piyush-playground.vercel.app) *(pending first deploy — see below)*
+**Live:** [piyush-playground.vercel.app](https://piyush-playground.vercel.app) · [piyushm.dev](https://piyushm.dev)
 
 ## Features
 

@@ -43,17 +43,20 @@ export default function IntroGate({ repoCount, onEnter }: IntroGateProps) {
   };
 
   return (
-    <div className="intro-gate fixed inset-0 z-50 flex items-center justify-center bg-[#FFF5E6]">
+    <div className="intro-gate fixed inset-0 z-50 flex items-center justify-center bg-background">
       <div className="mx-auto max-w-lg px-6 text-center">
-        <p className="mb-8 min-h-[4rem] font-display text-2xl leading-relaxed text-[#2D2A26] sm:text-3xl">
+        <p className="mb-3 font-display text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+          GitHub playground
+        </p>
+        <p className="mb-8 min-h-[4rem] font-display text-2xl leading-relaxed text-foreground sm:text-3xl">
           {typed}
-          <span className="animate-blink ml-0.5 inline-block w-2 bg-[#FF6B6B]">|</span>
+          <span className="animate-blink ml-0.5 inline-block w-2 bg-accent">|</span>
         </p>
 
         <button
           type="button"
           onClick={advance}
-          className="group rounded-full border-2 border-[#2D2A26] bg-white px-8 py-4 font-display text-lg text-[#2D2A26] shadow-[4px_4px_0_#2D2A26] transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_#2D2A26] active:translate-x-1 active:translate-y-1 active:shadow-none"
+          className="group rounded-full border-2 border-foreground bg-surface px-8 py-4 font-display text-lg text-foreground shadow-brutal-sm transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none"
           data-cursor="star"
         >
           {step < lines.length - 1 ? "Continue →" : "Enter the playground →"}

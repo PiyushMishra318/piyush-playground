@@ -127,10 +127,10 @@ export default function RepoGalaxy({ repos, onSelect }: RepoGalaxyProps) {
   return (
     <div
       ref={containerRef}
-      className="repo-galaxy relative h-[55vh] min-h-[320px] w-full overflow-hidden rounded-3xl border-2 border-[#2D2A26]/10 bg-gradient-to-br from-[#FFF9F0] to-[#FFE8D6]"
+      className="repo-galaxy bg-galaxy relative h-[55vh] min-h-[320px] w-full overflow-hidden rounded-3xl border-2 border-foreground/10"
       onPointerMove={onPointerMove}
     >
-      <p className="absolute left-4 top-4 z-10 rounded-full bg-white/80 px-3 py-1 text-xs font-medium text-[#8B7355] backdrop-blur">
+      <p className="absolute left-4 top-4 z-10 rounded-full bg-surface/80 px-3 py-1 text-xs font-medium text-muted backdrop-blur">
         drag the orbs · click to inspect
       </p>
 
@@ -138,7 +138,7 @@ export default function RepoGalaxy({ repos, onSelect }: RepoGalaxyProps) {
         <button
           key={orb.repo.name}
           type="button"
-          className="orb absolute flex cursor-grab items-center justify-center rounded-full border-2 border-[#2D2A26]/20 font-display text-sm font-bold text-[#2D2A26] shadow-lg transition-shadow hover:shadow-xl active:cursor-grabbing"
+          className="orb absolute flex cursor-grab items-center justify-center rounded-full border-2 border-foreground/20 font-display text-sm font-bold text-foreground shadow-lg transition-shadow hover:shadow-xl active:cursor-grabbing"
           style={{
             width: orb.size,
             height: orb.size,
