@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  basePath: "/products/playground",
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Piyush's GitHub Playground",
     description: "Explore public repos the fun way.",
-    url: "https://piyushm.dev/products/playground/",
+    url: "https://piyush-playground.vercel.app/",
   },
 };
 
