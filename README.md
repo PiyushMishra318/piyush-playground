@@ -10,7 +10,7 @@
 
 An interactive portfolio — playful, curious, and definitely not a boring project grid.
 
-[piyushm.dev](https://piyushm.dev/products/playground)
+[Playground](https://piyushm.dev/products/playground)
 
 ## Features
 
