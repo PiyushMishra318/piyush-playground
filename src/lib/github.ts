@@ -2,27 +2,26 @@ import type { Repo } from "./types";
 
 const USERNAME = "PiyushMishra318";
 
-/** Canonical Vercel demo URLs (suffixed aliases from portfolio handoff). */
+/** Live demos on the portfolio site. */
 const DEMO_URLS: Record<string, string> = {
-  "Threshold-Background-Cutout": "https://threshold-background-cutout.vercel.app",
-  "SVG-Palette-Processor": "https://svg-palette-processor.vercel.app",
-  "canvas-component-parser": "https://coot-parser-experimental.vercel.app",
-  "django-learning-projects": "https://django-learning-projects-neon.vercel.app",
-  "ESP8266-DHT11-Google-Sheets-Logger":
-    "https://esp8266-dht11-google-sheets-logger.vercel.app",
-  "HTML5-Canvas-Mini-Games": "https://html5-canvas-games.vercel.app",
-  XBat: "https://xbat.vercel.app",
-  lumina: "https://lumina-one-beta.vercel.app",
-  "postman-to-swagger": "https://postman-to-swagger.vercel.app",
-  "Tsukiyomi-Platform": "https://tsukiyomi-platform.vercel.app",
-  wingman: "https://wingman-rho-seven.vercel.app",
-  transcribe: "https://transcribe-wine.vercel.app",
-  talkative: "https://talkative-brown.vercel.app",
-  "website-page-speed-report": "https://website-page-speed-report.vercel.app",
-  "htmx-reading-time": "https://htmx-reading-time.vercel.app",
-  CodeDiff: "https://codediff-zeta.vercel.app",
-  lambda: "https://lambda-sepia.vercel.app",
-  "Email-Validation": "https://email-validation-three-neon.vercel.app",
+  "Threshold-Background-Cutout": "https://piyushm.dev/products/background-remover/",
+  "SVG-Palette-Processor": "https://piyushm.dev/products/svg-palette/",
+  "canvas-component-parser": "https://piyushm.dev/products/coot-parser/",
+  "django-learning-projects": "https://piyushm.dev/products/django-learning/",
+  "ESP8266-DHT11-Google-Sheets-Logger": "https://piyushm.dev/products/tracktemp/",
+  "HTML5-Canvas-Mini-Games": "https://piyushm.dev/products/canvas-games/",
+  XBat: "https://piyushm.dev/products/xbat/",
+  lumina: "https://piyushm.dev/products/lumina/",
+  "postman-to-swagger": "https://piyushm.dev/products/postman-to-swagger/",
+  "Tsukiyomi-Platform": "https://piyushm.dev/products/tsukiyomi/",
+  wingman: "https://piyushm.dev/products/wingman/",
+  transcribe: "https://piyushm.dev/products/transcribe/",
+  talkative: "https://piyushm.dev/products/talkative/",
+  "website-page-speed-report": "https://piyushm.dev/products/page-speed/",
+  "htmx-reading-time": "https://piyushm.dev/products/readtime/",
+  CodeDiff: "https://piyushm.dev/products/codediff/",
+  lambda: "https://piyushm.dev/products/lambda/",
+  "Email-Validation": "https://piyushm.dev/products/email-validation/",
 };
 
 const FALLBACK_DESCRIPTIONS: Record<string, string> = {
@@ -112,7 +111,6 @@ function mapRepo(raw: GitHubRepo): Repo {
 export async function getRepos(): Promise<Repo[]> {
   const res = await fetch(
     `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`,
-    { next: { revalidate: 3600 } },
   );
 
   if (!res.ok) {
