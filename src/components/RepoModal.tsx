@@ -101,8 +101,6 @@ export default function RepoModal({ repo, onClose }: RepoModalProps) {
           {repo.demo && (
             <a
               href={repo.demo}
-              target="_blank"
-              rel="noopener noreferrer"
               className="rounded-full border-2 border-foreground bg-surface px-5 py-2.5 text-sm font-medium text-foreground shadow-brutal-secondary transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
               data-cursor="star"
             >

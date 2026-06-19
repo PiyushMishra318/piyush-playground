@@ -2,26 +2,27 @@ import type { Repo } from "./types";
 
 const USERNAME = "PiyushMishra318";
 
-/** Live demos on the portfolio site. */
-const DEMO_URLS: Record<string, string> = {
-  "Threshold-Background-Cutout": "https://piyushm.dev/products/background-remover/",
-  "SVG-Palette-Processor": "https://piyushm.dev/products/svg-palette/",
-  "canvas-component-parser": "https://piyushm.dev/products/coot-parser/",
-  "django-learning-projects": "https://piyushm.dev/products/django-learning/",
-  "ESP8266-DHT11-Google-Sheets-Logger": "https://piyushm.dev/products/tracktemp/",
-  "HTML5-Canvas-Mini-Games": "https://piyushm.dev/products/canvas-games/",
-  XBat: "https://piyushm.dev/products/xbat/",
-  lumina: "https://piyushm.dev/products/lumina/",
-  "postman-to-swagger": "https://piyushm.dev/products/postman-to-swagger/",
-  "Tsukiyomi-Platform": "https://piyushm.dev/products/tsukiyomi/",
-  wingman: "https://piyushm.dev/products/wingman/",
-  transcribe: "https://piyushm.dev/products/transcribe/",
-  talkative: "https://piyushm.dev/products/talkative/",
-  "website-page-speed-report": "https://piyushm.dev/products/page-speed/",
-  "htmx-reading-time": "https://piyushm.dev/products/readtime/",
-  CodeDiff: "https://piyushm.dev/products/codediff/",
-  lambda: "https://piyushm.dev/products/lambda/",
-  "Email-Validation": "https://piyushm.dev/products/email-validation/",
+/** GitHub repo name → portfolio product slug (see scripts/products-manifest.mjs). */
+const REPO_TO_PRODUCT_SLUG: Record<string, string> = {
+  "Threshold-Background-Cutout": "background-remover",
+  "SVG-Palette-Processor": "svg-palette",
+  "canvas-component-parser": "coot-parser",
+  "django-learning-projects": "django-learning",
+  "Email-Validation": "email-validation",
+  "ESP8266-DHT11-Google-Sheets-Logger": "tracktemp",
+  "HTML5-Canvas-Mini-Games": "canvas-games",
+  CodeDiff: "codediff",
+  lambda: "lambda",
+  lumina: "lumina",
+  "postman-to-swagger": "postman-to-swagger",
+  "htmx-reading-time": "readtime",
+  talkative: "talkative",
+  transcribe: "transcribe",
+  "Tsukiyomi-Platform": "tsukiyomi",
+  "website-page-speed-report": "page-speed",
+  wingman: "wingman",
+  XBat: "xbat",
+  "piyush-playground": "playground",
 };
 
 const FALLBACK_DESCRIPTIONS: Record<string, string> = {
@@ -82,14 +83,42 @@ interface GitHubRepo {
 export const profile = {
   username: USERNAME,
   name: "Piyush Mishra",
-  site: "https://piyushm.dev",
+  site: "/",
   avatar: `https://github.com/${USERNAME}.png`,
 };
+
+function normalizeProductPath(pathname: string): string {
+  const withLeading = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return withLeading.endsWith("/") ? withLeading : `${withLeading}/`;
+}
+
+/** Portfolio product demos only — ignore stale GitHub homepage / vercel.app URLs. */
+function resolveDemo(repoName: string, homepage: string | null | undefined): string | undefined {
+  const slug = REPO_TO_PRODUCT_SLUG[repoName];
+  if (slug) return `/products/${slug}/`;
+
+  const home = homepage?.trim();
+  if (!home) return undefined;
+
+  if (home.startsWith("/products/")) {
+    return normalizeProductPath(home);
+  }
+
+  if (home.includes("piyushm.dev/products/")) {
+    try {
+      return normalizeProductPath(new URL(home).pathname);
+    } catch {
+      return undefined;
+    }
+  }
+
+  return undefined;
+}
 
 function mapRepo(raw: GitHubRepo): Repo {
   const emoji = LANGUAGE_EMOJI[raw.language ?? ""] ?? "📦";
   const color = PALETTE[hashString(raw.name) % PALETTE.length];
-  const demo = DEMO_URLS[raw.name] ?? raw.homepage ?? undefined;
+  const demo = resolveDemo(raw.name, raw.homepage);
   const description =
     raw.description ??
     FALLBACK_DESCRIPTIONS[raw.name] ??

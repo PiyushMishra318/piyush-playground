@@ -92,7 +92,7 @@ export default function Playground({ repos, profile }: PlaygroundProps) {
                 </h1>
                 <p className="mt-4 max-w-lg text-lg text-muted-foreground">
                   {repos.length} public repos as toys — galaxy or cards, hidden
-                  stars, live Vercel demos. For résumé-style work history visit{" "}
+                  stars, live product demos. For résumé-style work history visit{" "}
                   <a
                     href={profile.site}
                     className="font-medium text-accent underline decoration-highlight decoration-2 underline-offset-4"
@@ -124,7 +124,7 @@ export default function Playground({ repos, profile }: PlaygroundProps) {
             {withDemo.length > 0 && (
               <section className="mt-14">
                 <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-muted">
-                  Live on Vercel
+                  Live demos
                 </p>
                 <h2 className="mt-1 font-display text-2xl font-bold text-foreground">
                   Try the demos ({withDemo.length})
@@ -134,8 +134,6 @@ export default function Playground({ repos, profile }: PlaygroundProps) {
                     <a
                       key={repo.name}
                       href={repo.demo!}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="group flex items-start gap-3 rounded-2xl border-2 border-foreground/12 bg-surface p-4 shadow-card transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover"
                       data-cursor="star"
                     >
